@@ -101,7 +101,6 @@ public class textClc {
 
 
     public static void main(String[] args) throws IOException {
-        //Scanner scanner = new Scanner("жопа попа пися - попа");
         Scanner scanner = new Scanner(System.in);
         String text = scanner.nextLine();
         String[] textmain = Splitmain(text);
