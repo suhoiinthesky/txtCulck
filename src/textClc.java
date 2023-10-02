@@ -16,23 +16,21 @@ public class textClc {
 
         int i = 0;
         try {
+
             while (matcher.find()) {
                 result[i++] = matcher.group();
+            }
 
-            }
-            if (!matcher.find()){
-                throw new NullPointerException ("Вы не поствили оператор");
-            }
 
             for (String part : words) {
                 result[i++] = part.trim();
             }
 
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("Много элементов");
+            System.out.println("Ошибка формата");
             System.exit(1);
         }
-        if (result[1].equals("+") || result[1].equals("-") || result[1].equals("/") || result[1].equals("*")){
+        if (result[1].equals("+") || result[1].equals("-") || result[1].equals("/") || result[1].equals("*")) {
             throw new IOException("Первое что подается это фраза, а не оператор");
         }
         return result;
@@ -49,16 +47,17 @@ public class textClc {
                 String count2;
                 count2 = arrayF2[j];
                 if (count.equals(count2)) {
-                    arrayF1[i] = " ";
+                    arrayF1[i] = "";
+                    arrayF2[j] = "";
                     break;
                 }
             }
         }
 
         for (int i = 0; i < arrayF1.length; i++) {
-            result += arrayF1[i].trim() + " ";              //в этом цикле есть небольшой недочет
-        }                                                   //он не совесем хорошо разбивает пробелы при удалении слова между двух других
-        return result;                                      //но надеюсь вы меня простите за эту оплошность))0)
+            result += arrayF1[i].trim();
+        }
+        return result;
 
     }
     // хочу много - много пива
@@ -74,8 +73,8 @@ public class textClc {
             for (int i = 0; i < intresult; i++)
                 result += words[i];
             return result;
-        } catch (NumberFormatException e){
-            return "Ошибка. запишите - (\"Фрааза\" * число)";
+        } catch (NumberFormatException e) {
+            return "Ошибка. запишите - (\"Фрааза\" / число)";
         }
 
     }
@@ -93,17 +92,21 @@ public class textClc {
                     result += arrayC[i];
             }
             return result;
-        } catch (NumberFormatException e){
-            return "Ошибка. Запишите - (\"Фрааза\" / число)";
+        } catch (NumberFormatException e) {
+            return "Ошибка. Запишите - (\"Фрааза\" * число)";
         }
 
     }
 
 
     public static void main(String[] args) throws IOException {
-        Scanner scanner = new Scanner(System.in);
-        String text = scanner.nextLine();
-        String[] textmain = Splitmain(text);
+        System.out.println("Здрааствуйте, это мой второй калькулятор. На этот раз текстовый");
+        System.out.println("Введите выражение в формамте \"a\" + \"b\", \"a\" - \"b\", \"a\" * b, \"a\" / b.");
+        System.out.println("Где (\"а\" или \"b\") в кавычка фраза, а переменная без кавычек это  число");
+        System.out.println("Вы можете ввести фразу и без кавычек, будет работать и так, но в кавычки нужны по таску"); // здесь я возможно не верно понял условие
+        Scanner scanner = new Scanner(System.in);                                                                      // и нахождение строк в каавычках является необходимостью
+        String text = scanner.nextLine();                                                                              // но при выбрасывание исключений в программи при противном не было речи
+        String[] textmain = Splitmain(text);                                                                           // и все работает с ними и без
         String frase1 = textmain[1];
         String oper = textmain[0];
         String frase2 = textmain[2];
@@ -120,7 +123,7 @@ public class textClc {
             for (int i = 0; i < 40; i++) {
                 resultAlt += charCount[i];
             }
-            System.out.println("\"" + resultAlt+"..." + "\"");
+            System.out.println("\"" + resultAlt + "..." + "\"");
         } else {
             System.out.println("\"" + result + "\"");
         }
