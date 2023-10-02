@@ -100,11 +100,11 @@ public class textClc {
 
 
     public static void main(String[] args) throws IOException {
-        System.out.println("Здрааствуйте, это мой второй калькулятор. На этот раз текстовый");
+        System.out.println("Здраствуйте, это мой второй калькулятор. На этот раз текстовый");
         System.out.println("Введите выражение в формамте \"a\" + \"b\", \"a\" - \"b\", \"a\" * b, \"a\" / b.");
         System.out.println("Где (\"а\" или \"b\") в кавычка фраза, а переменная без кавычек это  число");
         System.out.println("Вы можете ввести фразу и без кавычек, будет работать и так, но в кавычки нужны по таску"); // здесь я возможно не верно понял условие
-        Scanner scanner = new Scanner(System.in);                                                                      // и нахождение строк в каавычках является необходимостью
+        Scanner scanner = new Scanner(System.in);                                                                      // и нахождение строк в кавычках является необходимостью
         String text = scanner.nextLine();                                                                              // но при выбрасывание исключений в программи при противном не было речи
         String[] textmain = Splitmain(text);                                                                           // и все работает с ними и без
         String frase1 = textmain[1];
