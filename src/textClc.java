@@ -66,6 +66,10 @@ public class textClc {
     private static String division(String frase, String count) {
         try {
             int countInt = Integer.parseInt(count);
+            if(countInt >= 11){
+                System.out.println("Принимаются числа до 10");
+                System.exit(1);
+            }
             char[] words = frase.toCharArray();
             int wordsCount = words.length;
             int intresult = wordsCount / countInt;
@@ -83,6 +87,10 @@ public class textClc {
     private static String multiply(String frase, String count) {
         try {
             int countInt = Integer.parseInt(count);
+            if(countInt >= 11){
+                System.out.println("Принимаются числа до 10");
+                System.exit(1);
+            }
             String[] arrayC = new String[countInt];
             String result = frase;
             if (countInt > 1) {
@@ -111,6 +119,12 @@ public class textClc {
         String oper = textmain[0];
         String frase2 = textmain[2];
         String result = "";
+        char[] frase1Words = frase1.toCharArray();
+        char[] frase2Words = frase2.toCharArray();
+        if (frase1Words.length >= 11 || frase2Words.length >= 11) {
+            System.out.println("Принимаются фразы до 10 символов");
+            System.exit(2);
+        }
         switch (oper) {
             case "+" -> result = (frase1 + frase2).replace("\"", "");
             case "-" -> result = minus(frase1, frase2);
