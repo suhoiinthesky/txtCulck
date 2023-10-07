@@ -37,28 +37,24 @@ public class textClc {
     }
 
     private static String minus(String frase1, String frase2) {
-        String[] arrayF1 = frase1.split(" ");
-        String[] arrayF2 = frase2.split(" ");
-        String result = "";
-        for (int i = 0; i < arrayF1.length; i++) {
-            String count;
-            count = arrayF1[i];
-            for (int j = 0; j < arrayF2.length; j++) {
-                String count2;
-                count2 = arrayF2[j];
-                if (count.equals(count2)) {
-                    arrayF1[i] = "";
-                    arrayF2[j] = "";
+        char[] charF1 = frase1.toCharArray();
+        char[] charF2 = frase2.toCharArray();
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < charF1.length; i++) {
+            char count = charF1[i];
+            boolean def = false;
+            for (int j = 0; j < charF2.length; j++) {
+                char count2 = charF2[j];
+                if (count == count2) {
+                    charF2[j] = '\0';
+                    def = true;
                     break;
                 }
             }
+            if (!def)
+                result.append(count);
         }
-
-        for (int i = 0; i < arrayF1.length; i++) {
-            result += arrayF1[i].trim();
-        }
-        return result;
-
+        return result.toString();
     }
     // хочу много - много пива
 
@@ -66,7 +62,7 @@ public class textClc {
     private static String division(String frase, String count) {
         try {
             int countInt = Integer.parseInt(count);
-            if(countInt >= 11){
+            if (countInt >= 11) {
                 System.out.println("Принимаются числа до 10");
                 System.exit(1);
             }
@@ -87,7 +83,7 @@ public class textClc {
     private static String multiply(String frase, String count) {
         try {
             int countInt = Integer.parseInt(count);
-            if(countInt >= 11){
+            if (countInt >= 11) {
                 System.out.println("Принимаются числа до 10");
                 System.exit(1);
             }
